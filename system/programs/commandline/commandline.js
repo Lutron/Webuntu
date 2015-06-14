@@ -1,7 +1,6 @@
 function commandline() {
-	id=createWindow("Commandline","system/programs/explorer/gfx/commandline.png",400,400);
-	$("#"+id).addClass("commandline");
-	$("#"+id+" > .content").append('<div id="consoleoutput">ayayayay<br>ayayay</div>');
+	id=createWindow("commandline","Commandline",programs+"commandline/commandline.png",400,400);
+	$("#"+id+" > .content").append('<div class="consoleoutput"></div>');
 	$("#"+id+" > .content").append('<input class="userinput" prefix="Lutan@GLaDOS:~$ " autofocus autocomplete=off>');
 	$("#"+id+" .userinput").val("Lutan@GLaDOS:~$ ");
 	$("#"+id+" .userinput").keydown(function (e) {
@@ -11,6 +10,7 @@ function commandline() {
 		if (e.which==13) {
 			var cmd=current.substring(prefix-1);
 			console.log(cmd);
+			$(this).val(prefix);
 		} else if ((e.which==37 || e.which==8) && caretPos<=prefix.length) {
 			e.preventDefault();
 			$(this).selectRange(prefix.length);
@@ -28,7 +28,6 @@ function commandline() {
 		} else if (current.indexOf(prefix) !== 0) {
 			var length=prefix.length;
 			var after = current.slice(length);
-			
 			$(this).val(prefix + after);
 		}
 		

@@ -1,7 +1,7 @@
 .commandline > .content {
 	background-color:black;
 	color:white;
-	font-family: Consolas, monospace;
+	font-family: monospace;
 	font-size:13px;
 }
 .commandline .userinput {
@@ -10,7 +10,7 @@
 	margin:0;
 	background-color:transparent;
 	color:white;
-	font-family: Consolas, monospace;
+	font-family: monospace;
 	width:100%;
 	cursor:default;
 }

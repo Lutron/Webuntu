@@ -1,7 +1,4 @@
 $(function() {
-	//Load basic stylesheet
-	$("head").append('<link class="system" rel="stylesheet" href="system/system.css" type="text/css">');
-	
 	//Start booting
 	runProgram("boot");
 });
