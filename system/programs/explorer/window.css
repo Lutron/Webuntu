@@ -1,0 +1,36 @@
+.window {
+	position:absolute;
+	overflow:hidden;
+	background-color:rgba(236, 240, 241, 0.5);
+	min-height:30px;
+	border-radius:5px;
+}
+.window > .titlebar {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	padding:4px;
+	height:34px;
+	line-height:26px;
+	overflow:hidden;
+}
+.window > .titlebar > .programicon {
+	float:left;
+	width:26px;
+	height:26px;
+	margin-right:5px;
+}
+.window > .titlebar > .titleicon {
+	width:26px;
+	height:26px;
+	float:right;
+	margin-left:3px;
+}
+.window > .content {
+	position:absolute;
+	top:34px;
+	left:4px;
+	right:4px;
+	bottom:4px;
+}

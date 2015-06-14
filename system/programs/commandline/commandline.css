@@ -1,0 +1,16 @@
+.commandline > .content {
+	background-color:black;
+	color:white;
+	font-family: Consolas, monospace;
+	font-size:13px;
+}
+.commandline .userinput {
+	border:0;
+	padding:0;
+	margin:0;
+	background-color:transparent;
+	color:white;
+	font-family: Consolas, monospace;
+	width:100%;
+	cursor:default;
+}

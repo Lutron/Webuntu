@@ -1,0 +1,151 @@
+#explorer {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#e67e22;
+	background-image:url(../../users/Lutan/background.jpg);
+	background-size:100% 100%;
+}
+#explorer #taskbar {
+	position:absolute;
+	left:0;
+	bottom:0;
+	right:0;
+	height:50px;
+	background-color:rgba(46, 204, 113,0.7);
+	z-index:5;
+}
+#explorer #programwrapper {
+	height:100%;
+	overflow:hidden;
+}
+#explorer #iconwrapper {
+	float:right;
+	height:100%;
+}
+
+
+
+
+#explorer #programwrapper > .element {
+	float:left;
+	width:60px;
+	margin-right:5px;
+	height:100%;
+	padding:5px 10px;
+	background-color:rgba(236, 240, 241, 0.3);
+	border-radius:5px;
+}
+#explorer #programwrapper > .element.pinned {
+	background-color:transparent;
+}
+#explorer #programwrapper > .element > img {
+	height:40px;
+	opacity:0.8;
+}
+#explorer #programwrapper > .element:hover > img {
+	opacity:1;
+}
+
+#explorer #iconwrapper > * {
+	height:100%;
+}
+#explorer #time {
+	width:70px;
+}
+#explorer #menu {
+	position:absolute;
+	display:none;
+	left:0;
+	bottom:50px;
+	max-height:800px;
+	background-color:rgba(155, 89, 182,0.5);
+	z-index:5;
+	border-radius:5px;
+}
+#explorer #menufirst {
+	position:relative;
+	float:left;
+	min-width:250px;
+	min-height:500px;
+	height:100%;
+	background-color:white;
+	margin:5px 0 5px 5px;
+	border-radius:5px;
+	overflow:hidden;
+	font-size:13px;
+}
+#explorer #menusecond {
+	float:right;
+	min-width:150px;
+	background-color:transparent;
+	margin:5px;
+	height:100%;
+}
+#explorer #search {
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	padding:10px;
+	height:50px;
+	border-top:1px solid grey;
+}
+#explorer #search > input {
+	width:100%;
+	height:100%;
+	border-radius:5px;
+	padding-left:5px;
+}
+#explorer #programs {
+	width:100%;
+	max-height:calc(100% - 20px);
+}
+#explorer #programs > .element {
+	height:40px;
+	width:100%;
+	padding:5px;
+	line-height:30px;
+}
+#explorer #programs > .element:hover {
+	background-color:rgba(52, 152, 219,0.2);
+}
+#explorer #programs > .element > img {
+	height:30px;
+	width:30px;
+	float:left;
+	margin-right:10px;
+}
+
+#explorer #userfoto {
+	position:relative;
+	text-align:center;
+	top:-30px;
+}
+#explorer #userfoto > img {
+	background-color:white;
+	border-radius:5px;
+	padding:5px;
+}
+#explorer #menusecond .element {
+	height:30px;
+	line-height:30px;
+	padding-left:5px;
+	color:white;
+	border-radius:5px;
+	border:1px solid transparent;
+	width:100%;	
+	font-size:13px;
+}
+
+#explorer #menusecond hr {
+	color:rgba(236, 240, 241,0.5);
+}
+
+#explorer #menusecond .element:hover {
+	border-color:rgba(236, 240, 241,0.5);
+}
+
+
