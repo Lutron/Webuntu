@@ -15,7 +15,6 @@
 	right:0;
 	height:50px;
 	background-color:rgba(46, 204, 113,0.7);
-	z-index:5;
 }
 #explorer #programwrapper {
 	height:100%;
@@ -24,6 +23,122 @@
 #explorer #iconwrapper {
 	float:right;
 	height:100%;
+}
+
+#explorer_contextmenu {
+	position:absolute;
+	top:0;
+	left:0;
+	min-width:100px;
+	background-color:rgba(236, 240, 241, 0.7);
+	border:1px solid grey;
+	border-radius:5px;
+}
+#explorer_contextmenu .element {
+	position:relative;
+	min-width:100%;
+	padding:0 5px;
+	height:25px;
+	font-size:15px;
+	line-height:25px;
+}
+#explorer_contextmenu .element > .menu {
+	position:absolute;
+	display:none;
+	top:-1px;
+	left:100%;
+	min-width:100px;
+	background-color:rgba(236, 240, 241, 0.7);
+	border:1px solid grey;
+	border-radius:5px;
+}
+#explorer_contextmenu .element > .menu:hover {
+	display:block;
+}
+#explorer_contextmenu .element:hover {
+	background-color:rgba(236, 240, 241, 0.5);
+}
+#explorer_contextmenu .element:hover > .menu {
+	display:block;
+}
+
+.filemanager .adressbar {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	height:25px;
+}
+.filemanager .adressbar > input {
+	width:calc(100% - 30px);
+	height:100%;
+}
+.filemanager .adressbar > img {
+	width:20px;
+	height:20px;
+	float:left;
+	margin:2px 5px 0 0;
+	border:1px solid transparent;
+	border-radius:5px;
+}
+.filemanager .adressbar > img:hover {
+	border:1px solid grey;
+}
+.filemanager .adressbar > img.disabled {
+	border:1px solid transparent;
+	opacity:0.5;
+}
+
+.filemanager .places {
+	position:absolute;
+	top:25px;
+	left:0;
+	bottom:0;
+	width:150px;
+	border-right:1px solid grey;
+}
+.filemanager .places .element {
+	height:20px;
+	line-height:18px;
+	width:100%;
+	font-size:13px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	padding-top:2px;
+}
+.filemanager .places .element > img {
+	height:16px;
+	width:16px;
+	float:left;
+	margin:0 2px 2px 2px;
+}
+
+.filemanager .files {
+	position:absolute;
+	top:25px;
+	left:150px;
+	right:0;
+	bottom:0;
+}
+.filemanager .files .element {
+	height:20px;
+	line-height:18px;
+	width:100%;
+	font-size:13px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	padding-top:2px;
+}
+.filemanager .files .element.marked {
+	background-color:rgba(26, 188, 156, 0.3);
+}
+.filemanager .files .element > img {
+	height:16px;
+	width:16px;
+	float:left;
+	margin:0 2px 2px 2px;
 }
 
 
@@ -37,6 +152,9 @@
 	padding:5px 10px;
 	background-color:rgba(236, 240, 241, 0.3);
 	border-radius:5px;
+}
+#explorer #programwrapper > .element.active {
+	background-color:rgba(236, 240, 241, 0.6);
 }
 #explorer #programwrapper > .element.pinned {
 	background-color:transparent;

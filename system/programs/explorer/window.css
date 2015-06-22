@@ -5,6 +5,9 @@
 	min-height:30px;
 	border-radius:5px;
 }
+.window.active {
+	background-color:rgba(236, 240, 241, 0.9);
+}
 .window > .titlebar {
 	position:absolute;
 	top:0;
@@ -15,7 +18,20 @@
 	line-height:26px;
 	overflow:hidden;
 }
-.window > .titlebar > .programicon {
+.window > .titlebar > .titlename {
+	position:absolute;
+	top:0;
+	left:0;
+	width:calc(100% - 65px);
+	height:34px;
+	padding:4px;
+	height:34px;
+	line-height:26px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.window > .titlebar > .titlename > .programicon {
 	float:left;
 	width:26px;
 	height:26px;

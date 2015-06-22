@@ -1,6 +1,6 @@
 function login() {
 	$("body").append('<div id="login"></div>');
-	request=$.getJSON("index.php?program=login&action=listUsers");
+	request=$.getJSON("index.php?action=listUsers");
 	request.done(function(data) {
 		dropdown='';
 		for (id in data) {
@@ -19,7 +19,7 @@ function login() {
 			e.preventDefault();
 			username=$("#login > form > select[name=user]").val();
 			password=$("#login > form > input[name=password]").val();
-			request=$.get("index.php?program=login&action=login&username="+username+"&password="+password);
+			request=$.get("index.php?action=login&username="+username+"&password="+password);
 			request.done(function(data) {
 				if (data!="") {
 					runProgram("explorer");
@@ -31,5 +31,8 @@ function login() {
 				}
 			});
 		});
+	});
+	request.error(function() {
+		alert("Failure while booting.");
 	});
 }

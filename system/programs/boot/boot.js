@@ -4,7 +4,7 @@ function boot() {
 	$("#boot").append('<img id="logo" src="'+programs+'boot/logo.png">');
 	
 	//Show login screen
-	request=$.get("index.php?program=kernel&action=currentUser");
+	request=$.get("index.php?action=currentUser");
 	request.done(function(data) {
 		if (data=="") {
 			runProgram("login");

@@ -12,7 +12,7 @@ function webbrowser() {
 				url="http://"+url;
 				$(this).val(url);
 			}
-			frame.attr("src",url);
+			frame.attr("src",url+'?myCrazyQuerystring=' + new Date().getTime());
 			/*request=$.getJSON("system/programs/webbrowser/webbrowser.php?url="+input.val()+"&id="+id);
 			request.done(function(data) {
 				console.log(data);

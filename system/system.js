@@ -9,12 +9,52 @@ window.user="Lutan";
 
 
 
-function runProgram(program) {
-	if ($("style."+program).length==0) {
+function runProgram(program,parameter) {
+	if ($("link."+program).length==0) {
 		$("head").append('<link class="'+program+'" rel="stylesheet" href="'+programs+program+'/'+program+'.css" type="text/css">');
 	}
 	if ($("script."+program).length==0) {
 		$("head").append('<script class="'+program+'" src="'+programs+program+'/'+program+'.js">');
 	}
-	window[program]();
+	$("#explorer #menu").hide();
+	window[program](parameter);
+}
+
+window.ctrlKey=false;
+window.shiftKey=false;
+$(document).keydown(function(e) {
+	window.ctrlKey=e.ctrlKey;
+	window.shiftKey=e.shiftKey;
+});
+
+function system_deleteFile(filepath) {
+	request=$.get("index.php?action=deleteFile&path="+filepath);
+	request.done(function(data) {
+		if (data!="") {
+			alert(data);
+		} else if ($("#explorer").length!=0) {
+			$(".window.filemanager").each(function() {
+				explorer_refreshWindows();
+			});
+		}
+	});
+	request.error(function() {
+		alert("Connection problems.");
+	});
+}
+
+function system_writeFile(filepath,content) {
+	request=$.ajax("index.php?action=saveFile&path="+filepath+"&content="+encodeURIComponent(content));
+	request.done(function(data) {
+		if (data!="") {
+			alert(data);
+		} else if ($("#explorer").length!=0) {
+			$(".window.filemanager").each(function() {
+				explorer_refreshWindows();
+			});
+		}
+	});
+	request.error(function() {
+		alert("Connection problems.");
+	});
 }

@@ -12,5 +12,9 @@
 	color:white;
 	font-family: monospace;
 	width:100%;
+	height:auto;
 	cursor:default;
+	resize: none;
+	overflow:hidden;
+	word-wrap:break-word;
 }

@@ -4,10 +4,14 @@ $_SESSION["data"] = isset($_SESSION["data"]) ? $_SESSION["data"] : array();
 $_SESSION["data"]["currentuser"] = isset($_SESSION["data"]["currentuser"]) ? $_SESSION["data"]["currentuser"] : "";
 
 $r=$_REQUEST;
-if (isset($r["program"]) && $r["program"]!="" && file_exists("system/".$r["program"]."/".$r["program"].".php")) {
-	require_once("system/".$r["program"]."/".$r["program"].".php");
+if (isset($r["program"]) && $r["program"]!="" && file_exists("system/programs/".$r["program"]."/".$r["program"].".php")) {
+	require_once("system/programs/".$r["program"]."/".$r["program"].".php");
 	$program=new $r["program"];
 	$program->execute($r);
+} else if (isset($r["action"]) && $r["action"]!="") {
+	require_once("kernel.php");
+	$k=new kernel();
+	$k->execute($r);
 } else {
 	init();
 }

@@ -1,13 +1,14 @@
 function commandline() {
 	id=createWindow("commandline","Commandline",programs+"commandline/commandline.png",400,400);
 	$("#"+id+" > .content").append('<div class="consoleoutput"></div>');
-	$("#"+id+" > .content").append('<input class="userinput" prefix="Lutan@GLaDOS:~$ " autofocus autocomplete=off>');
-	$("#"+id+" .userinput").val("Lutan@GLaDOS:~$ ");
+	$("#"+id+" > .content").append('<textarea class="userinput" prefix="'+user+'@GLaDOS:~$ " autofocus autocomplete=off></textarea>');
+	$("#"+id+" .userinput").val(user+"@GLaDOS:~$ ");
 	$("#"+id+" .userinput").keydown(function (e) {
 		var current = $(this).val();
 		var prefix=$(this).attr("prefix");
 		var caretPos=doGetCaretPosition($(this)[0]);
 		if (e.which==13) {
+			e.preventDefault();
 			var cmd=current.substring(prefix-1);
 			console.log(cmd);
 			$(this).val(prefix);
@@ -34,16 +35,22 @@ function commandline() {
 		if (e.shiftKey) {
 			$(this).selectRange(caretPos);
 		}
+		
+		$(this).height(0);
+		$(this).height(this.scrollHeight);
+	});
+	
+	$("#"+id+" .userinput").keyup(function (e) {
+		$(this).height(0);
+		$(this).height(this.scrollHeight);
 	});
 	
 	$(document).on("click","#"+id,function() {
 		$(this).find(".userinput").focus();
-		$(this).find(".userinput").selectRange($(this).find(".userinput").attr("prefix").length);
+		$(this).find(".userinput").selectRange($(this).find(".userinput").val().length);
 	});
 	$("#"+id).click();
 }
-
-
 
 
 
