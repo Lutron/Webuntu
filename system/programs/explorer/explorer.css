@@ -72,6 +72,7 @@
 .filemanager .adressbar > input {
 	width:calc(100% - 30px);
 	height:100%;
+	float:right;
 }
 .filemanager .adressbar > img {
 	width:20px;
@@ -97,6 +98,9 @@
 	width:150px;
 	border-right:1px solid grey;
 }
+.filemanager.saveas .places {
+	bottom:25px;
+}
 .filemanager .places .element {
 	height:20px;
 	line-height:18px;
@@ -120,6 +124,28 @@
 	left:150px;
 	right:0;
 	bottom:0;
+}
+.filemanager.saveas .files {
+	bottom:25px;
+}
+.filemanager.saveas .targetfile {
+	position:absolute;
+	left:0;
+	right:0;
+	bottom:0;
+	height:25px;
+}
+.filemanager.saveas .targetfile > input {
+	width:calc(100% - 25px);
+	height:100%;
+}
+.filemanager.saveas .targetfile > img {
+	width:21px;
+	height:21px;
+	float:right;
+	margin:2px;
+	border:1px solid transparent;
+	border-radius:5px;
 }
 .filemanager .files .element {
 	height:20px;

@@ -44,7 +44,7 @@ function system_deleteFile(filepath) {
 }
 
 function system_writeFile(filepath,content) {
-	request=$.ajax("index.php?action=saveFile&path="+filepath+"&content="+encodeURIComponent(content));
+	request=$.ajax("index.php?action=writeFile&path="+filepath+"&content="+encodeURIComponent(content));
 	request.done(function(data) {
 		if (data!="") {
 			alert(data);
@@ -57,4 +57,26 @@ function system_writeFile(filepath,content) {
 	request.error(function() {
 		alert("Connection problems.");
 	});
+}
+
+function readIni(name, callback) {
+	var request=$.ajax({
+		url:"index.php?action=readIni&filename="+encodeURIComponent(name),
+		success: callback
+	});
+	request.error(function() {
+		return false;
+	});
+}
+
+function escapeHtml(text) {
+  var map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+
+  return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }

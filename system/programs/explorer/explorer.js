@@ -41,6 +41,19 @@ function explorer_filemanager_saveasopendir(windowdiv,dir) {
 			}
 			elements.removeClass("marked");
 			$(this).addClass("marked");
+			if ($(this).attr("type")=="file") {
+				$(this).closest(".content").find(".targetfile").children("input").val($(this).text());
+			} else {
+				$(this).closest(".content").find(".targetfile").children("input").val("");
+			}
+		});
+		files.contextmenu(function(e) {
+			var context=[];
+			var submenu=[["Dummy",'alert();']];
+			context.push(["New file",'explorer_createNewFile("'+data[0]+'");']);
+			
+			context.push(["Refresh",'alert("Refresh");']);
+			explorer_contextmenu(e,context);
 		});
 		var folderup=windowdiv.children(".adressbar").children("img");
 		folderup.unbind("click");
@@ -67,10 +80,9 @@ function explorer_filemanager_saveasonefolderup(windowdiv) {
 }
 
 function explorer_filemanager_saveas(filecontent) {
-	var id=createWindow("filemanager", "Filemanager", programs+"/explorer/explorer.png", 400, 400);
+	var id=createWindow("filemanager saveas", "Filemanager", programs+"/explorer/explorer.png", 400, 400);
 	var window=$("#"+id+" > .content");
 	window.append('<div class="files"></div>');
-	var files=window.children(".files");
 	
 	window.append('<div class="adressbar"></div>');
 	var adressbar=window.children(".adressbar");
@@ -92,6 +104,39 @@ function explorer_filemanager_saveas(filecontent) {
 		explorer_filemanager_saveasopendir(window,$(this).attr("dir"));
 	});
 	explorer_filemanager_saveasopendir(window,"");
+	window.append('<div class="targetfile"><input type="text"><img src="'+programs+'/explorer/save.png"></div>');
+	var windowpathinput=window.children(".targetfile").children("input");
+	windowpathinput.data("filecontent",filecontent);
+	windowpathinput.keydown(function(e) {
+		if (e.which==13) {
+			var path=$(this).closest(".window").find("input[name=path]").val();
+			var filename=windowpathinput.val();
+			var request=$.get("index.php?action=writeFile&path="+path+"/"+filename+"&content="+encodeURIComponent($(this).data("filecontent")));
+			request.done(function(data) {
+				if (data!="") {
+					alert(data);
+				} else {
+					$(".window.filemanager.saveas").remove();
+				}
+			});
+		}
+	});
+	window.children(".targetfile").children("img").click(function() {
+		var path=$(this).closest(".window").find("input[name=path]").val();
+		var filename=windowpathinput.val();
+		var request=$.get("index.php?action=writeFile&path="+path+"/"+filename+"&content="+encodeURIComponent($(this).siblings("input").data("filecontent")));
+		request.done(function(data) {
+			if (data!="") {
+				alert(data);
+			} else {
+				$(".window.filemanager.saveas").each(function() {
+					var id=$(this).attr("id");
+					$(this).remove();
+					$('#explorer #taskbar .element[window="'+id+'"]').remove();
+				});
+			}
+		});
+	});
 }
 
 function explorer_filemanager(path) {

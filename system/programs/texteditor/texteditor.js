@@ -18,14 +18,14 @@ function texteditor(filepath) {
 
 function texteditor_createWindow(path,content) {
 	var title=path!="" ? "Texteditor - "+path : "Texteditor";
-	var id=createWindow("texteditor", title, programs+"/texteditor/texteditor.png", 400, 400);
+	var id=createWindow("texteditor", title, programs+"texteditor/texteditor.png", 400, 400);
 	var windowdiv=$("#"+id+" > .content");
 	windowdiv.append('<div class="menu"><input type="hidden" name="curfile" value="'+path+'"></div>');
 	var menu=windowdiv.children(".menu");
 	menu.append('<img class="openfile" src="'+programs+'/explorer/file.png">');
 	menu.append('<img class="savefile" src="'+programs+'/explorer/save.png">');
 	menu.append('<img class="savefileas" src="'+programs+'/explorer/saveas.png">');
-	windowdiv.append('<div class="textareawrapper"><textarea>'+content+'</textarea></div>');
+	windowdiv.append('<div class="textareawrapper"><textarea>'+escapeHtml(content)+'</textarea></div>');
 	menu.children(".openfile").click(function() {
 		alert("openfile");
 	});
