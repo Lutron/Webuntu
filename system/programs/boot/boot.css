@@ -5,8 +5,7 @@
 	right:0;
 	bottom:0;
 	background-color:black;
-	
-	z-index:2;
+	z-index:50;
 }
 #boot > #logo {
 	position:absolute;

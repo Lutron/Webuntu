@@ -7,6 +7,7 @@
 	background-color:#e67e22;
 	background-image:url(../../users/Lutan/background.jpg);
 	background-size:100% 100%;
+	z-index:5;
 }
 #explorer #taskbar {
 	position:absolute;
@@ -14,7 +15,7 @@
 	bottom:0;
 	right:0;
 	height:50px;
-	background-color:rgba(46, 204, 113,0.7);
+	background-color:rgba(44, 62, 80, 0.7);
 }
 #explorer #programwrapper {
 	height:100%;
@@ -167,9 +168,6 @@
 	margin:0 2px 2px 2px;
 }
 
-
-
-
 #explorer #programwrapper > .element {
 	float:left;
 	width:60px;
@@ -211,23 +209,46 @@
 }
 #explorer #menufirst {
 	position:relative;
-	float:left;
 	min-width:250px;
 	min-height:500px;
 	height:100%;
 	background-color:white;
-	margin:5px 0 5px 5px;
+	margin:5px 150px 5px 5px;
 	border-radius:5px;
 	overflow:hidden;
 	font-size:13px;
 }
 #explorer #menusecond {
-	float:right;
-	min-width:150px;
+	position:absolute;
+	top:0;
+	right:0;
+	bottom:50px;
+	width:150px;
 	background-color:transparent;
-	margin:5px;
+	padding:5px;
 	height:100%;
+	display:inline-block;
 }
+
+#explorer #shutdown {
+	position:absolute;
+	bottom:15px;
+	right:10px;
+	height:20px;
+	width:130px;
+
+	font-size:13px;
+	height:30px;
+	line-height:30px;
+	padding-left:5px;
+	color:white;
+	border-radius:5px;
+	border:1px solid transparent;
+}
+#explorer #shutdown:hover {
+	border-color:rgba(236, 240, 241, 0.5);
+}
+
 #explorer #search {
 	position:absolute;
 	left:0;

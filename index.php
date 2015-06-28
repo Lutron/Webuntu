@@ -20,13 +20,14 @@ function init() {
 echo '
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>webOS</title>
+<title>Webuntu</title>
 <link rel="shortcut icon" href="system/gfx/symbol.png">
 <link class="system" rel="stylesheet" href="system/jquery-ui.css" type="text/css">
 <link class="system" rel="stylesheet" href="system/system.css" type="text/css">
 <script src="system/jquery-2.1.4.min.js"></script>
 <script src="system/jquery-ui.min.js"></script>
 <script src="system/system.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
 ';
 }
 ?>

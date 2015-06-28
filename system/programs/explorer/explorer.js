@@ -444,14 +444,18 @@ function explorer_firstinstance() {
 	$("#explorer #iconwrapper").append('<div id="time"></div>');
 	
 	$("#explorer #taskbar").append('<div id="programwrapper"></div>');
-	$("#explorer #programwrapper").append('<div id="startbutton" class="element pinned" tabindex=1><img src="system/gfx/win8.png"></img></div>');
+	$("#explorer #programwrapper").append('<div id="startbutton" class="element pinned" tabindex=1><img src="system/gfx/symbol.png"></img></div>');
 	$("#explorer").append('<div id="menu"></div>');
 	
 	$("#explorer #menu").append('<div id="menufirst"></div>');
 	$("#explorer #menufirst").append('<div id="programs"></div>');
-	$("#explorer #programs").append('<div class="element" program="commandline"><img src="'+programs+'commandline/commandline.png">cmd</div>');
-	$("#explorer #programs").append('<div class="element" program="webbrowser"><img src="'+programs+'webbrowser/webbrowser.png">Webbrowser</div>');
-	$("#explorer #programs").append('<div class="element" program="texteditor"><img src="'+programs+'texteditor/texteditor.png">Texteditor</div>');
+	var request=$.getJSON("index.php?action=listPrograms");
+	request.done(function(data) {
+		for (id in data) {
+			$("#explorer #programs").append('<div class="element" program="'+data[id]+'"><img src="'+programs+data[id]+'/'+data[id]+'.png">'+data[id]+'</div>');
+		}
+	});
+	
 	$("#explorer #menufirst").append('<div id="search"><input type=text placeholder="Search"></div>');
 	
 	$("#explorer #menu").append('<div id="menusecond"></div>');
@@ -462,6 +466,8 @@ function explorer_firstinstance() {
 	$("#explorer #menusecond").append('<hr>');
 	$("#explorer #menusecond").append('<div class="element" onclick="runProgram(\'explorer\',\'/\');">Root</div>');
 	$("#explorer #menusecond").append('<div class="element">Settings</div>');
+	
+	$("#explorer #menu").append('<div onclick="system_shutdown();" id="shutdown">Logout</div>');
 	//End taskbar and menu
 	
 	//Desktop
@@ -545,6 +551,7 @@ function createWindow(cla, title, iconpath, width, height) {
 	});
 	$("#"+id+" > .titlebar > .minimizeicon").click(function() {
 		filewindow.hide();
+		$("#explorer #taskbar .element").removeClass("active");
 	});
 	$("#explorer #taskbar .element").removeClass("active");
 	$("#explorer #programwrapper").append('<div class="element active" window="'+id+'"><img src="'+iconpath+'"></img></div>');
@@ -561,6 +568,8 @@ function createWindow(cla, title, iconpath, width, height) {
 			target.addClass("active");
 			$("#explorer #taskbar .element").removeClass("active");
 			$(this).addClass("active");
+			
+			explorer_frontDesktop();
 		}
 	});
 	filewindow.draggable({
@@ -575,6 +584,7 @@ function createWindow(cla, title, iconpath, width, height) {
 		$(this).css("zIndex",window.windowszindex);
 		$(".window").removeClass("active");
 		$(this).addClass("active");
+		explorer_frontDesktop();
 	});
 	filewindow.css("min-width",width+"px");
 	filewindow.css("min-height","34px");
@@ -582,6 +592,11 @@ function createWindow(cla, title, iconpath, width, height) {
 	$(".window").removeClass("active");
 	filewindow.addClass("active");
 	return id;
+}
+
+function explorer_frontDesktop() {
+	$("#explorer #taskbar").css("zIndex",window.windowszindex + 3);
+	$("#explorer #menu").css("zIndex",window.windowszindex + 3);
 }
 function destroyWindow(id) {
 	$("#"+id).remove();

@@ -27,6 +27,13 @@ $(document).keydown(function(e) {
 	window.shiftKey=e.shiftKey;
 });
 
+function system_shutdown() {
+	var request=$.get("index.php?action=logout");
+	request.done(function() {
+		location.reload(true);
+	});
+}
+
 function system_deleteFile(filepath) {
 	request=$.get("index.php?action=deleteFile&path="+filepath);
 	request.done(function(data) {

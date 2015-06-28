@@ -11,8 +11,10 @@ function boot() {
 		} else {
 			runProgram("explorer");
 		}
-		$("#boot").fadeOut(500, function() {
-			$("#boot").remove();
-		});
+		setTimeout(function() {
+			$("#boot").fadeOut(500, function() {
+				$("#boot").remove();
+			});
+		},500);
 	});
 };

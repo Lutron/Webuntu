@@ -4,8 +4,7 @@ function login() {
 	request.done(function(data) {
 		content='<div id="formwrapper">';
 		for (id in data) {
-			content+='<link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">\
-						<form class="login_form" method=post action=index.php>\
+			content+='	<form class="login_form" method=post action=index.php>\
 							<input type="hidden" name="user" value="'+data[id]+'">\
 							<div class="username">'+data[id]+'</div>\
 							<input class="password" type="password" name="password" placeholder="Password">\
@@ -33,8 +32,11 @@ function login() {
 			request.done(function(data) {
 				if (data!="") {
 					runProgram("explorer");
-					$("#login").fadeOut(500,function() {
+					$("#login .login_form").fadeOut(500,function() {
 						$(this).remove();
+						$("#login").fadeOut(500,function() {
+							$(this).remove();
+						});
 					});
 				} else {
 					alert("Wrong password.");

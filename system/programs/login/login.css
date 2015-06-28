@@ -8,6 +8,7 @@
 	background-image:url(background.jpg);
 	background-size:cover;
 	font-family: 'Ubuntu', sans-serif;
+	z-index:10;
 }
 #login #formwrapper {
 	position:absolute;

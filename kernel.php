@@ -24,11 +24,7 @@ class kernel {
 				$this->login($u,$p);
 				break;
 			case "listUsers":
-				$users=array_filter(glob('system/users/*',GLOB_ONLYDIR), 'is_dir');
-				foreach ($users as $key=>$u) {
-					$users[$key]=basename($u);
-				}
-				echo json_encode($users);
+				$this->listUsers();
 				break;
 			case "copyFiles":
 				$des=isset($r["destination"]) ? $r["destination"] : die();
@@ -64,7 +60,31 @@ class kernel {
 			case "logout":
 				$this->logout();
 				break;
+			case "listPrograms":
+				$this->listPrograms();
+				break;
 		}
+	}
+	
+	function listUsers() {
+		$users=array_filter(glob('system/users/*',GLOB_ONLYDIR), 'is_dir');
+		foreach ($users as $key=>$u) {
+			$users[$key]=basename($u);
+		}
+		echo json_encode($users);
+	}
+	
+	function listPrograms() {
+		$dirs=array_filter(glob('system/programs/*',GLOB_ONLYDIR), 'is_dir');
+		foreach ($dirs as $key=>$d) {
+			$basename=basename($d);
+			if (in_array($basename,array("boot","login","explorer"))) {
+				unset($dirs[$key]);
+			} else {
+				$dirs[$key]=$basename;
+			}
+		}
+		echo json_encode($dirs);
 	}
 	
 	function writeIni($filename,$content) {
