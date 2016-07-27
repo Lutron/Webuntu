@@ -1,6 +1,6 @@
 <?php
 class kernel {
-	var $root="/Webentwicklung/webOS/";
+	var $root="/Webentwicklung/meh/Webuntu/";
 	function execute($r) {
 		switch($r["action"]) {
 			case "currentUser":
