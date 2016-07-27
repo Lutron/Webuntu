@@ -1,4 +1,5 @@
 <?php
+ini_set('zlib.output_compression', 'Off'); 
 session_start();
 $_SESSION["data"] = isset($_SESSION["data"]) ? $_SESSION["data"] : array();
 $_SESSION["data"]["currentuser"] = isset($_SESSION["data"]["currentuser"]) ? $_SESSION["data"]["currentuser"] : "";

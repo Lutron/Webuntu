@@ -3,7 +3,10 @@
 	color:white;
 	font-family: monospace;
 	font-size:13px;
+	box-sizing:content-box;
+	overflow-y:scroll;
 }
+
 .commandline .userinput {
 	border:0;
 	padding:0;
